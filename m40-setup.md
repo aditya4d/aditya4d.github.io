@@ -147,7 +147,7 @@ cmake .. -G Ninja -DCUTLASS_NVCC_ARCHS=52
 ninja
 ```
 
-Once built, run `./profiler/cutlass_profiler` to run different GEMM operations on the GPU. (Make sure the binary is running on the correct GPU by checking nvidia-smi for process running on specific GPU or use `--device=<cuda device id>` after the profiler. 
+Once built, run `./tools/profiler/cutlass_profiler` to run different GEMM operations on the GPU. (Make sure the binary is running on the correct GPU by checking nvidia-smi for process running on specific GPU or use `--device=<cuda device id>` after the profiler. 
 
-To see what GPUs are visible to `cutlass_profiler`, run `./profiler/cutlass_profiler --help`
+To see what GPUs are visible to `cutlass_profiler`, run `./tools/profiler/cutlass_profiler --help`
 
