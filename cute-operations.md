@@ -207,3 +207,29 @@ auto depth_1 = depth(s1); //< depth_1 = 1
 
 > Returns 
 
+### `local_tile(tensor, tiler, coord, proj)`
+
+It returns a tile after diving the `tensor` into multiple `tiler`s at `coord`s. The `proj` is used to select different modes in the `coord` and `tiler`.
+
+```cpp
+//< ltile is (32,4):(1,64)
+auto ltile = local_tile(
+  tensor, //< (64,16):(1:64)
+  tiler, //< (32,4)
+  coord, //< = (blockIdx.x, blockIdx.y)
+  proj
+);
+```
+
+### `local_partition(tensor, layout, index)`
+
+It returns a tile after dividing the `tensor` into sub-tiles of `layout` shapes and assign each of these sub-tiles to `index`
+
+```cpp
+/// lpart is (8,2):(4:128)
+auto lpart = local_partition(
+  tensor, //< (32,4):(1:64)
+  layout, //< (4,2):(1,64)
+  index); //< = threadIdx.x
+```
+
