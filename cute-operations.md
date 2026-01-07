@@ -175,14 +175,14 @@ Rank is the number of dimensions of a mode
 
 ```cpp
 auto s0 = 100;
-auto s1 = make_shape(11, 12);
-auto s2 = make_shape(13, 14, 15);
-auto s3 = make_shape(s1, s2);
-auto s = make_shape(s0, s3);
+auto s1 = make_shape(11, 12); //< (11, 12)
+auto s2 = make_shape(13, 14, 15); //< (13, 14, 15)
+auto s3 = make_shape(s1, s2); //< ((11, 12), (13, 14, 15))
+auto s = make_shape(s0, s3); //< (100, ((11, 12), (13, 14, 15)))
 
-auto rank_0 = rank(s, 0); //< rank_0 = 1
-auto rank_1 = rank(s, 1); //< rank_1 = rank(s3) = 2
-auto rank_2 = rank(s2); //< rank_2 = 3
+auto rank_0 = rank(s, 0); //< rank_0 = 1, rank((100));
+auto rank_1 = rank(s, 1); //< rank_1 = rank(s3) = 2, rank((11, 12), (13, 14, 15));
+auto rank_2 = rank(s2); //< rank_2 = 3, rank((13, 14, 15))
 ```
 
 ### `depth(tensor)`
